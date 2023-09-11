@@ -2123,3 +2123,7 @@ span.error {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+b {
+  font-weight: bold;
+}
