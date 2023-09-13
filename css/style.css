@@ -2125,5 +2125,5 @@ span.error {
 }
 
 b {
-  font-weight: bold;
+  font-weight: bold !important;
 }
