@@ -6,46 +6,51 @@ import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
+import Timeline from "./Timeline";
 
 function About() {
   return (
     <Container fluid className="about-section">
       <Particle />
       <Container>
-        <Row style={{ justifyContent: "center", padding: "10px" }}>
+        <Row style={{justifyContent: "center", padding: "10px"}}>
           <Col
-            md={7}
-            style={{
-              justifyContent: "center",
-              paddingTop: "30px",
-              paddingBottom: "50px",
-            }}
+              md={7}
+              style={{
+                justifyContent: "center",
+                paddingTop: "30px",
+                paddingBottom: "50px",
+              }}
           >
-            <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
+            <h1 style={{fontSize: "2.1em", paddingBottom: "20px"}}>
               Know Who <strong className="purple">I'M</strong>
             </h1>
-            <Aboutcard />
+            <Aboutcard/>
           </Col>
           <Col
-            md={5}
-            style={{ paddingTop: "120px", paddingBottom: "50px" }}
-            className="about-img"
+              md={5}
+              style={{paddingTop: "120px", paddingBottom: "50px"}}
+              className="about-img"
           >
-            <img src={laptopImg} alt="about" className="img-fluid" />
+            <img src={laptopImg} alt="about" className="img-fluid"/>
           </Col>
         </Row>
         <h1 className="project-heading">
           Professional <strong className="purple">Skillset </strong>
         </h1>
 
-        <Techstack />
+        <Techstack/>
 
         <h1 className="project-heading">
           <strong className="purple">Tools</strong> I use
         </h1>
-        <Toolstack />
+        <Toolstack/>
 
-        <Github />
+        <Github/>
+        <h1 className="project-heading timeline-header">
+          <strong className="light-purple">Education</strong> &amp;
+          <strong className="purple2"> Experience</strong></h1>
+        <Timeline/>
       </Container>
     </Container>
   );

@@ -1,33 +1,56 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, OverlayTrigger, Tooltip } from "react-bootstrap";
 import {
-  SiVisualstudiocode,
-  SiPostman,
-  SiSlack,
-  SiVercel,
-  SiMacos,
+    SiPostman,
+    SiSlack,
+    SiVercel,
+    SiMacos,
+    SiJetbrains,
+    SiNotion,
+    SiAtlassian,
 } from "react-icons/si";
 
 function Toolstack() {
-  return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiMacos />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiVisualstudiocode />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPostman />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiSlack />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiVercel />
-      </Col>
-    </Row>
-  );
+    return (
+        <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+            <Col xs={4} md={2} className="tech-icons">
+                <OverlayTrigger placement="top" overlay={<Tooltip>macOS</Tooltip>}>
+                    <div>
+                        <SiMacos />
+                    </div>
+                </OverlayTrigger>
+            </Col>
+            <Col xs={4} md={2} className="tech-icons">
+                <OverlayTrigger placement="top" overlay={<Tooltip>JetBrains</Tooltip>}>
+                    <div>
+                        <SiJetbrains />
+                    </div>
+                </OverlayTrigger>
+            </Col>
+            <Col xs={4} md={2} className="tech-icons">
+                <OverlayTrigger placement="top" overlay={<Tooltip>Notion</Tooltip>}>
+                    <div>
+                        <SiNotion />
+                    </div>
+                </OverlayTrigger>
+            </Col>
+            <Col xs={4} md={2} className="tech-icons">
+                <OverlayTrigger placement="top" overlay={<Tooltip>Atlassian</Tooltip>}>
+                    <div>
+                        <SiAtlassian />
+                    </div>
+                </OverlayTrigger>
+            </Col>
+
+            <Col xs={4} md={2} className="tech-icons">
+                <OverlayTrigger placement="top" overlay={<Tooltip>Slack</Tooltip>}>
+                    <div>
+                        <SiSlack />
+                    </div>
+                </OverlayTrigger>
+            </Col>
+        </Row>
+    );
 }
 
 export default Toolstack;

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdf from "../../Assets/../Assets/Soumyajit_Behera-BIT_MESRA.pdf";
+import pdf from "../../Assets/Korous_Jakub_CV.pdf";
+import pdfEn from "../../Assets/Korous_Jakub_CV_en.pdf";
+import pdfCs from "../../Assets/Korous_Jakub_CV_cs.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
@@ -16,40 +19,49 @@ function ResumeNew() {
   }, []);
 
   return (
-    <div>
-      <Container fluid className="resume-section">
-        <Particle />
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
+      <div>
+        <Container fluid className="resume-section">
+          <Particle />
+          {/* Řádek s tlačítky */}
+          <Row
+              style={{
+                justifyContent: "center",
+                position: "relative",
+                marginBottom: "20px",
+              }}
           >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
+            <Col xs="auto">
+              <Button
+                  variant="primary"
+                  href={pdfEn}
+                  target="_blank"
+                  style={{ maxWidth: "250px", marginRight: "10px" }}
+              >
+                <AiOutlineDownload />
+                &nbsp;Download CV EN
+              </Button>
+            </Col>
+            <Col xs="auto">
+              <Button
+                  variant="primary"
+                  href={pdfCs}
+                  target="_blank"
+                  style={{ maxWidth: "250px" }}
+              >
+                <AiOutlineDownload />
+                &nbsp;Download CV CS
+              </Button>
+            </Col>
+          </Row>
 
-        <Row className="resume">
-          <Document file={pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
-
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
-      </Container>
-    </div>
+          {/* Náhled PDF – zobrazuje se vždy CV EN */}
+          <Row className="resume">
+            <Document file={pdf} className="d-flex justify-content-center">
+              <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+            </Document>
+          </Row>
+        </Container>
+      </div>
   );
 }
 

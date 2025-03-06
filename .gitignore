@@ -1,24 +1,29 @@
-# Vyloučení složky s nainstalovanými balíčky
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Cache soubory (včetně cache uvnitř node_modules)
-node_modules/.cache/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Logy z npm a yarn
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# testing
+/coverage
 
-# Složky pro build output (pokud používáš např. create-react-app)
-build/
-dist/
+# production
+/build
 
-# Konfigurační soubory s proměnnými prostředí
+# misc
+.DS_Store
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Systémové soubory (macOS)
-.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.eslintcache
+
+Server/node_modules
+Server/config.js

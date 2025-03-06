@@ -13,10 +13,23 @@ html {
 
   --imp-text-color: #c770f0;
 }
+body{
+  background-color: rgb(10, 4, 22) !important;
+}
 
 .purple {
   color: var(--imp-text-color) !important;
 }
+
+.purple2 {
+  color: hsla(272, 85%, 74%, 0.9); /* Sytější fialová */
+}
+
+.light-purple {
+  color: hsla(272, 85%, 74%, 0.6); /* Světlejší, méně sytá fialová */
+  /* Nebo např. #b164f7 pro trochu jiný odstín */
+}
+
 
 button:focus {
   box-shadow: none !important;
@@ -307,7 +320,7 @@ button:focus {
 
 .myAvtar {
   justify-content: center !important;
-  padding-top: 9em !important;
+  padding-top: 10em !important;
 }
 
 @media (max-width: 767px) {
@@ -740,4 +753,263 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+/* Kontejner a středová linka zůstávají stejné */
+.timeline-header{
+  padding-left: 25px;
+}
+.timeline-container {
+  position: relative;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #888;
+  transform: translateX(-50%);
+}
+
+/* Základní styly položek */
+.timeline-item {
+  position: relative;
+  margin-bottom: 170px;
+  min-height: 100px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #6f42c1;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+/* Styl boxu s textem a data pro položky umístěné vlevo */
+/* Styl pro položky vlevo */
+.timeline-item.left .timeline-box {
+  position: absolute;
+  top: 0;
+  right: 53%;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 300px;
+  z-index: 1;
+  background: linear-gradient(135deg, hsla(272, 85%, 74%, 0.15), hsla(272, 85%, 74%, 0.15));
+  border-left: 6px solid hsla(272, 85%, 74%, 0.44);
+  box-shadow: 0 2px 10px hsla(272, 85%, 74%, 0.25);
+  color: #ddd;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-item.left .timeline-box:hover {
+  transform: scale(1.01) ;
+  overflow: hidden !important;
+}
+
+.timeline-item.left .timeline-date {
+  position: absolute;
+  top: 10px;
+  left: 51%;
+  transform: translateX(10%);
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 3;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.timeline-item.left .timeline-date:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Styl pro položky vpravo */
+.timeline-item.right .timeline-box {
+  position: absolute;
+  top: 0;
+  left: 53%;
+  background: linear-gradient(135deg, hsla(272, 85%, 74%, 0.35), hsla(272, 85%, 74%, 0.35));
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 300px;
+  z-index: 1;
+  border-left: 6px solid hsla(272, 85%, 74%, 0.92);
+  box-shadow: 0 2px 10px hsla(272, 85%, 74%, 0.55);
+  color: #ddd;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-item.right .timeline-box:hover {
+  transform: scale(1.01) !important;
+  overflow: hidden !important;
+}
+
+.timeline-item.right .timeline-date {
+  position: absolute;
+  top: 10px;
+  left: 49%;
+  transform: translateX(-110%);
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 3;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.timeline-item.right .timeline-date:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+
+/* Responsivita: pro obrazovky <= 768px – vše pod sebou */
+@media (max-width: 768px) {
+  .timeline-header{
+    padding-left: 0px;
+  }
+  .timeline-line{
+    left: 0;
+  }
+  .timeline-dot{
+    left: 0;
+  }
+  .timeline-item .timeline-box{
+    max-width: max-content;
+    width: 100%;
+  }
+  .timeline-item.left .timeline-box{
+    top: 65%;
+    transform: none;
+    left: 8%;
+    padding: 10px;
+  }
+  .timeline-item.right .timeline-box{
+    top: 65%;
+    transform: none;
+    left: 8%;
+  }
+  .timeline-item.right .timeline-date{
+    left: 8%;
+    transform: none;
+
+  }
+  .timeline-item.left .timeline-date{
+    left: 8%;
+    transform: none;
+
+  }
+  .timeline-item{
+    margin-bottom: 190px;
+  }
+}
+
+
+
+/* Celá contact page sekce */
+.contact-page-section {
+  background: linear-gradient(135deg, #0f0e17, #1a1a2e);
+  color: #fff;
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+/* Kontejner */
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Fancy karta – pro formulář a info box */
+.fancy-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.fancy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Nadpisy */
+.contact-title {
+  margin-bottom: 20px;
+  color: #c770f0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.contact-info-box h3 {
+  margin-bottom: 20px;
+  color: #c770f0;
+  font-weight: 600;
+}
+
+/* Tlačítko */
+.send-btn {
+  background-color: #6f42c1;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.send-btn:hover {
+  background-color: #5e38a3;
+  transform: scale(1.05);
+}
+
+/* Kontaktní seznam */
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.info-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.info-icon {
+  margin-right: 10px;
+  color: #c770f0;
+  font-size: 1.2rem;
+}
+
+/* Sociální ikony */
+.social-icons a {
+  display: inline-block;
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #c770f0;
+}
+
+/* Responzivita */
+@media (max-width: 768px) {
+  .form-column, .info-column {
+    margin-bottom: 30px;
+  }
 }
