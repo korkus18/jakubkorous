@@ -482,7 +482,6 @@ button:focus {
 }
 .project-card-view:hover {
   transform: scale(1.02) !important;
-  overflow: hidden !important;
   box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
 }
 
@@ -550,7 +549,6 @@ button:focus {
   font-weight: 500 !important;
   padding-top: 10px !important;
 }
-
 /* --------- */
 /* About */
 /* --------- */
@@ -918,98 +916,174 @@ button:focus {
 
 
 
-/* Celá contact page sekce */
-.contact-page-section {
-  background: linear-gradient(135deg, #0f0e17, #1a1a2e);
-  color: #fff;
+
+
+
+
+
+
+/* Celá stránka kontaktů */
+.contact-page {
+  background-size: cover;
+  background-position: center;
+  color: #e0e0e0;
   min-height: 100vh;
-  padding: 60px 0;
+  background-image: var(--image-gradient);
+  width: 100%;
+  padding-top: 150px !important;
+  padding-right: var(--bs-gutter-x, .75rem);
+  padding-left: var(--bs-gutter-x, .75rem);
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* Kontejner */
+
+
+/* Kontejner pro obsah kontaktní stránky */
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-/* Fancy karta – pro formulář a info box */
+/* Fancy karta s glassmorphism efektem – stejná jako u ostatních sekcí */
 .fancy-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 30px;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.fancy-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 5px 3px rgba(119, 53, 136, 0.459) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease 0s !important;
+  opacity: 0.9 !important;
+  background-color: transparent !important;
+
+  flex: 1;
+  min-width: 300px;
 }
 
-/* Nadpisy */
+
+
+/* Levý blok – kontaktní informace */
+.contact-info {
+  flex: 0 0 40%;
+  /* Zarovnáme ho nahoře */
+  align-self: flex-start;
+}
+
+/* Nadpis v kontaktní kartě */
 .contact-title {
-  margin-bottom: 20px;
-  color: #c770f0;
+  color: var(--imp-text-color);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.contact-info-box h3 {
+  letter-spacing: 2px;
   margin-bottom: 20px;
-  color: #c770f0;
-  font-weight: 600;
+  font-size: 1.8rem;
 }
 
-/* Tlačítko */
-.send-btn {
-  background-color: #6f42c1;
-  border: none;
-  padding: 10px 20px;
-  font-weight: 600;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.send-btn:hover {
-  background-color: #5e38a3;
-  transform: scale(1.05);
-}
-
-/* Kontaktní seznam */
-.info-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-}
-.info-list li {
+/* Kontaktní text (telefon, e-mail) */
+.contact-info p {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
 }
-.info-icon {
+
+.contact-icon {
   margin-right: 10px;
-  color: #c770f0;
-  font-size: 1.2rem;
+  color: var(--imp-text-color);
 }
 
 /* Sociální ikony */
-.social-icons a {
-  display: inline-block;
-  color: #fff;
-  font-size: 1.5rem;
-  margin: 0 10px;
-  transition: color 0.3s ease;
-}
-.social-icons a:hover {
-  color: #c770f0;
+.social-icons {
+  margin-top: 20px;
 }
 
-/* Responzivita */
+.social-icons a {
+  color: #e0e0e0;
+  margin-right: 15px;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--imp-text-color);
+}
+
+/* Pravý blok – kontaktní formulář */
+.contact-form {
+  flex: 0 0 55%;
+}
+
+/* Kontaktní formulář */
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 15px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--imp-text-color);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Tlačítko pro odeslání formuláře */
+.send-btn {
+  background: var(--imp-text-color);
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  align-self: flex-start;
+  margin: auto;
+}
+
+.send-btn:hover {
+  background: #b45ab8;
+  transform: translateY(-2px);
+}
+
+/* Responzivita: Na menších obrazovkách se obsah seřadí pod sebe */
 @media (max-width: 768px) {
-  .form-column, .info-column {
-    margin-bottom: 30px;
+  .contact-container {
+    flex-direction: column;
+  }
+  .send-btn {
+    margin: auto;
+  }
+  .contact-info {
+    flex: 1 1 100%;
+    text-align: center;
   }
 }

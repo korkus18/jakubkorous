@@ -1,0 +1,78 @@
+
+@startuml
+
+' Data třída reprezentující Instagram příspěvek
+class InstagramPost {
+  - id: String
+  - shortcode: String
+  - dimensions: String
+  - src: String
+  - srcAttached: List<String>
+  - hasAudio: Boolean
+  - videoUrl: String
+  - views: Integer
+  - plays: Integer
+  - likes: Integer
+  - location: String
+  - takenAt: DateTime
+  - related: List<String>
+  - type: String
+  - videoDuration: Float
+  - music: String
+  - isVideo: Boolean
+  - taggedUsers: List<String>
+  - captions: List<String>
+  - relatedProfiles: List<String>
+  - commentsCount: Integer
+  - commentsDisabled: Boolean
+  - commentsNextPage: String
+  - comments: List<Comment>
+}
+
+' Třída pro celkovou zprávu analýzy
+class AnalyzeEvaluator {
+  - Analyzes: List<AnalyzeResult>
+  + evaluateAnalyzes(Analyzes: List<AnalyzeResult>): AnalyzeEvaluation
+}
+
+class PostScraper {
+    + scrapeData(post_url: string): InstagramPost
+}
+
+class Comment {
+    - id: String
+    - text: String
+    - createdAt: DateTime
+    - owner: String
+    - ownerVerified: Boolean
+    - viewerHasLiked: Boolean
+    - likes: Integer
+}
+
+' Jeden analyzér s metodami pro všechny analýzy
+class Analyzer {
+  - post: InstagramPost
+  + analyzeHashtags(self.post: InstagramPost): AnalyzeResult
+  + analyzeEngagement(self.post: InstagramPost): AnalyzeResult
+  + analyzeVisualQuality(self.post: InstagramPost): AnalyzeResult
+  + analyzeContentConsistency(self.post: InstagramPost): AnalyzeResult
+  + analyzeCaption(self.post: InstagramPost): AnalyzeResult
+  + analyzeMetadata(self.post: InstagramPost): AnalyzeResult
+  + compareWithBenchmarks(self.post: InstagramPost): AnalyzeResult
+}
+
+class AnalyzeResult {
+  - type: String
+  - score: int
+  - detail: String
+}
+
+' Vztahy mezi třídami
+InstagramPost --> Analyzer
+Analyzer --> AnalyzeResult
+AnalyzeResult --> AnalyzeEvaluator
+PostScraper --> InstagramPost
+
+InstagramPost "1" o-- "0..*" Comment : comments
+
+@enduml
