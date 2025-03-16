@@ -2,40 +2,55 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Particle from "../Particle";
 import emailjs from "emailjs-com";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
     FaPhoneAlt,
     FaEnvelope,
     FaLinkedin,
     FaGithub,
     FaFacebook,
-    FaInstagram, FaMapMarkerAlt, FaAddressCard,
+    FaInstagram,
+    FaMapMarkerAlt,
+    FaAddressCard,
 } from "react-icons/fa";
 
 function ContactPage() {
     // Lokální stav pro zobrazení hlášky
     const [feedbackMsg, setFeedbackMsg] = useState("");
+    // Stav pro reCAPTCHA (uloží token po ověření)
+    const [captchaValue, setCaptchaValue] = useState(null);
+
+    // Funkce, která se spustí při změně reCAPTCHA (tj. ověření uživatele)
+    const handleRecaptchaChange = (value) => {
+        setCaptchaValue(value);
+    };
 
     const sendEmail = (e) => {
         e.preventDefault();
 
+        // Zkontrolujeme, zda uživatel dokončil reCAPTCHA
+        if (!captchaValue) {
+            setFeedbackMsg("Prosím, dokončete reCAPTCHA.");
+            return;
+        }
+
         emailjs
             .sendForm(
-                "service_3azg8ex",      // Tvůj Service ID
-                "template_nsk9ovf",        // Tvůj Template ID
-                e.target,              // Formulář
-                "4OrFtzvqEH0Hz5_8Q"    // Tvůj Public (User) Key
+                "service_3azg8ex", // Tvůj Service ID
+                "template_nsk9ovf", // Tvůj Template ID
+                e.target, // Formulář
+                "4OrFtzvqEH0Hz5_8Q" // Tvůj Public (User) Key
             )
             .then(
                 (result) => {
                     console.log("Email odeslán:", result.text);
-                    // Nastavíme úspěšnou hlášku
                     setFeedbackMsg("Zpráva byla úspěšně odeslána!");
-                    // Reset formuláře
                     e.target.reset();
+                    // Reset reCAPTCHA po úspěšném odeslání (pokud je to potřeba)
+                    setCaptchaValue(null);
                 },
                 (error) => {
                     console.log("Chyba při odesílání:", error.text);
-                    // Nastavíme chybovou hlášku
                     setFeedbackMsg("Došlo k chybě, zkuste to prosím znovu.");
                 }
             );
@@ -70,28 +85,28 @@ function ContactPage() {
                             </p>
                             <div className="social-icons">
                                 <a
-                                    href="https://facebook.com/yourprofile"
+                                    href="https://www.facebook.com/profile.php?id=100010851090658"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     <FaFacebook />
                                 </a>
                                 <a
-                                    href="https://instagram.com/yourprofile"
+                                    href="https://www.instagram.com/kubakorous/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     <FaInstagram />
                                 </a>
                                 <a
-                                    href="https://linkedin.com/in/yourprofile"
+                                    href="https://www.linkedin.com/in/jakub-korous-9a98aa1b9/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     <FaLinkedin />
                                 </a>
                                 <a
-                                    href="https://github.com/yourprofile"
+                                    href="https://github.com/korkus18/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -139,6 +154,15 @@ function ContactPage() {
                                 <Form.Group className="form-group" controlId="message">
                                     <Form.Label>Message</Form.Label>
                                     <Form.Control as="textarea" rows={5} placeholder="Your message" name="message" />
+                                </Form.Group>
+                                {/* Přidání reCAPTCHA */}
+                                <Form.Group className="form-group">
+                                    <ReCAPTCHA
+                                        sitekey="6LcCFPYqAAAAAHFrLAx0jFck7AizMjM65ird9D5r"
+                                        onChange={handleRecaptchaChange}
+                                        theme="dark"
+                                        hl="en"
+                                    />
                                 </Form.Group>
                                 <Button variant="primary" type="submit" className="send-btn">
                                     Send Message

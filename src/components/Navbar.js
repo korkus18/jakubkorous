@@ -98,11 +98,13 @@ function NavBar() {
               <Button
                   as={Link}
                   to="/contact"
-                className="fork-btn-inner"
+                  className="fork-btn-inner"
+                  onClick={() => updateExpanded(false)}
               >
                 <AiOutlineMail style={{ marginBottom: "2px" }} /> Contact
               </Button>
             </Nav.Item>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

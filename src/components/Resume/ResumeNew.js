@@ -36,7 +36,7 @@ function ResumeNew() {
                   variant="primary"
                   href={pdfEn}
                   target="_blank"
-                  style={{ maxWidth: "250px", marginRight: "10px" }}
+                  style={{ maxWidth: "250px", marginTop: "5px"}}
               >
                 <AiOutlineDownload />
                 &nbsp;Download CV EN
@@ -47,7 +47,7 @@ function ResumeNew() {
                   variant="primary"
                   href={pdfCs}
                   target="_blank"
-                  style={{ maxWidth: "250px" }}
+                  style={{ maxWidth: "250px", marginTop: "5px" }}
               >
                 <AiOutlineDownload />
                 &nbsp;Download CV CS

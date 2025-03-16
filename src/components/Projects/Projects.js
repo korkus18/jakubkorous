@@ -51,7 +51,7 @@ function Projects() {
                   isBlog={false}
                   title="SmartTodo"
                   description="A modern, Django-powered to-do application designed to streamline your tasks with an intuitive interface and robust functionality."
-                  demoLink="https://todo.jakubkorous.cz/"
+                  demoLink=""
                   companyLogo={jk}
               />
             </Col>

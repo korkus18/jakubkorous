@@ -272,7 +272,7 @@ button:focus {
   z-index: -1;
   background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
   background-position: top center;
-  background-repeat: no-repeat;
+  background-repeat: round;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
 }
@@ -1086,4 +1086,10 @@ button:focus {
     flex: 1 1 100%;
     text-align: center;
   }
+}
+
+
+.g-recaptcha {
+  transform:scale(0.4);
+  transform-origin:0 0;
 }
