@@ -7,7 +7,7 @@ import {
   AiOutlineTwitter,
   AiFillInstagram,
 } from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import {FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaLinkedinIn} from "react-icons/fa";
 
 function Introduce() {
   return (
@@ -50,42 +50,38 @@ function Introduce() {
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                    href="https://github.com/soumyajit4419"
+                    href="https://www.facebook.com/profile.php?id=100010851090658"
                     target="_blank"
-                    rel="noreferrer"
-                    className="icon-colour  home-social-icons"
+                    rel="noopener noreferrer"
                 >
-                  <AiFillGithub/>
+                  <FaFacebook/>
                 </a>
               </li>
               <li className="social-icons">
                 <a
-                    href="https://twitter.com/Soumyajit4419"
+                    href="https://www.instagram.com/kubakorous/"
                     target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
+                    rel="noopener noreferrer"
                 >
-                  <AiOutlineTwitter />
+                  <FaInstagram/>
                 </a>
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
+                    href="https://www.linkedin.com/in/jakub-korous-9a98aa1b9/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                  <FaLinkedinIn />
+                  <FaLinkedin/>
                 </a>
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.instagram.com/soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
+                    href="https://github.com/korkus18/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                  <AiFillInstagram />
+                  <FaGithub/>
                 </a>
               </li>
             </ul>
@@ -95,4 +91,5 @@ function Introduce() {
     </Container>
   );
 }
+
 export default Introduce;
