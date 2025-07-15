@@ -18,7 +18,7 @@ function Timeline() {
         },
         {
             side: "right",
-            date: "Dec 2023 - Present",
+            date: "Dec 2023 - Mar 2025",
             title: "Argo22 s.r.o.",
             subtitle: "Web App Developer",
             description: "Full stack: HTML, CSS, JS, Tailwind, React, Vue, Node, PHP, Django. E-commerce.",
