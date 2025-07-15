@@ -5,9 +5,9 @@ function Timeline() {
         {
             side: "right",
             date: "May 2025 - Present",
-            title: "Web Application Developer",
-            subtitle: "Freelance",
-            description: "Developing a complex application for marketing and lead generation on LinkedIn utilizing AI, Vue.js, and Django.",
+            title: "Leadspicker s.r.o.",
+            subtitle: "Web Application Developer",
+            description: "Developing B2B SaaS platform for marketing and lead generation on LinkedIn utilizing AI, Vue.js, and Django.",
         },
         {
             side: "left",
