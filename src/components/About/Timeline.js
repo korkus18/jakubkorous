@@ -3,6 +3,13 @@ import React from "react";
 function Timeline() {
     const timelineData = [
         {
+            side: "right",
+            date: "May 2025 - Present",
+            title: "Web Application Developer",
+            subtitle: "Freelance",
+            description: "Developing a complex application for marketing and lead generation on LinkedIn utilizing AI, Vue.js, and Django.",
+        },
+        {
             side: "left",
             date: "Sep 2024 - Present",
             title: "University of South Bohemia",
