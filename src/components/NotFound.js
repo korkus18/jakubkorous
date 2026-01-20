@@ -1,9 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Particle from './Particle';
 
 function NotFound() {
+  const navigate = useNavigate();
+
   return (
     <Container fluid className="home-section" style={{ minHeight: '100vh' }}>
       <Particle />
@@ -20,8 +22,6 @@ function NotFound() {
               The page you're looking for doesn't exist or has been moved.
             </p>
             <Button
-              as={Link}
-              to="/"
               variant="primary"
               size="lg"
               style={{
@@ -30,6 +30,7 @@ function NotFound() {
                 padding: '12px 30px',
                 fontSize: '1.1rem'
               }}
+              onClick={() => navigate('/')}
             >
               Go Back Home
             </Button>

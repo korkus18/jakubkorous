@@ -2,12 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
-import {FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaLinkedinIn} from "react-icons/fa";
+import {FaFacebook, FaGithub, FaInstagram, FaLinkedin} from "react-icons/fa";
 
 function Introduce() {
   return (
@@ -19,25 +14,18 @@ function Introduce() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I'm a <b className="purple">full-stack developer</b> and university student with proven experience in
-              designing <b className="purple">scalable e-commerce platforms</b> and <b className="purple">advanced web
-              applications</b>. My passion for technology drives me to refine my skills and implement innovative,
-              real-world solutions.
+              I'm a <b className="purple">full-stack developer</b> and <b className="purple">early-stage B2B SaaS builder</b> focused on <b className="purple">automation, data, and scalable systems</b>.
               <br/><br/>
-              I have deep expertise in modern web technologies like HTML5, CSS3, and JavaScript, using frameworks such
-              as React.js and Vue.js. On the backend, I build robust APIs with Node.js and have advanced skills in PHP
-              (Symfony), WordPress customizations, and Python/Django.
+              I work <b className="purple">end-to-end</b> — from shaping product ideas and defining <b className="purple">system architecture</b> to building <b className="purple">frontend interfaces</b> and <b className="purple">reliable backend services</b>. I'm not interested in writing code for its own sake. I build systems that <b className="purple">remove friction</b>, <b className="purple">save time</b>, and <b className="purple">create leverage</b>.
               <br/><br/>
-              I'm dedicated to writing <b className="purple">clean, efficient code</b> and crafting <b
-                className="purple">intuitive UX/UI designs</b> that push the boundaries of web development. I
-              continuously embrace new technologies to deliver high-performance, future-ready solutions.
+              My background spans modern frontend frameworks like <b className="purple">React</b> and <b className="purple">Vue</b>, as well as backend development with <b className="purple">Django</b>, <b className="purple">Symfony</b>, and <b className="purple">REST-based APIs</b>. I prioritize <b className="purple">maintainability</b>, clarity, and <b className="purple">real-world impact</b> over theoretical perfection.
             </p>
           </Col>
 
 
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar"/>
+              <img src={myImg} className="img-fluid" alt=""/>
             </Tilt>
           </Col>
         </Row>

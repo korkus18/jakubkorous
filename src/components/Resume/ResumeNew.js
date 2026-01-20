@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdf from "../../Assets/Korous_Jakub_CV.pdf";
-import pdfEn from "../../Assets/Korous_Jakub_CV_en.pdf";
-import pdfCs from "../../Assets/Korous_Jakub_CV_cs.pdf";
+import pdf from "../../Assets/Korous_jakub_CV.pdf";
+import pdfEn from "../../Assets/Korous_jakub_CV_en.pdf";
+import pdfCs from "../../Assets/Korous_jakub_CV_cs.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
@@ -13,17 +13,25 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
+
+  function onDocumentLoadSuccess() {
+    setError(null);
+  }
+
+  function onDocumentLoadError() {
+    setError('Unable to load PDF. Please use the download buttons above.');
+  }
 
   return (
       <div>
 
         <Container fluid className="resume-section">
           <Particle />
-          {/* Řádek s tlačítky */}
           <Row
               style={{
                 justifyContent: "center",
@@ -55,11 +63,26 @@ function ResumeNew() {
             </Col>
           </Row>
 
-          {/* Náhled PDF – zobrazuje se vždy CV EN */}
           <Row className="resume">
-            <Document file={pdf} className="d-flex justify-content-center">
-              <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-            </Document>
+            {error ? (
+              <div style={{ textAlign: 'center', color: 'white', padding: '40px' }}>
+                <p>{error}</p>
+              </div>
+            ) : (
+              <Document 
+                file={pdf} 
+                className="d-flex justify-content-center"
+                loading={
+                  <div style={{ textAlign: 'center', color: 'white', padding: '40px' }}>
+                    <p>Loading CV...</p>
+                  </div>
+                }
+                onLoadSuccess={onDocumentLoadSuccess}
+                onLoadError={onDocumentLoadError}
+              >
+                <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+              </Document>
+            )}
           </Row>
         </Container>
       </div>

@@ -1,13 +1,11 @@
 import React from "react";
 import { Col, Row, OverlayTrigger, Tooltip } from "react-bootstrap";
 import {
-    SiPostman,
-    SiSlack,
-    SiVercel,
     SiMacos,
     SiJetbrains,
     SiNotion,
     SiAtlassian,
+    SiSlack,
 } from "react-icons/si";
 
 function Toolstack() {

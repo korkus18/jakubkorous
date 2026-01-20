@@ -12,6 +12,14 @@ html {
   );
 
   --imp-text-color: #c770f0;
+  --timeline-offset: 53%;
+  --timeline-date-offset: 52%;
+  --timeline-card-width: 42%;
+  --timeline-card-max-width-left: 380px;
+  --timeline-card-max-width-right: 420px;
+  --timeline-spacing: 180px;
+  --timeline-dot-size: 16px;
+  --timeline-line-width: 2px;
 }
 body{
   background-color: rgb(10, 4, 22) !important;
@@ -35,9 +43,7 @@ button:focus {
   box-shadow: none !important;
 }
 
-/* --------- */
-/*  Preloader */
-/* --------- */
+/* Preloader */
 #preloader {
   position: fixed;
   top: 0;
@@ -60,34 +66,27 @@ button:focus {
   height: 100vh;
 }
 
-/* --------- */
-/*Scrollbar   */
-/* --------- */
+/* Scrollbar */
 
 ::-webkit-scrollbar {
   width: 7px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #2d1950;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(178, 121, 216, 0.959);
   border-radius: 12px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(222, 130, 235, 0.911);
   border-radius: 12px;
 }
 
-/* --------- */
-/* Navbar Section  */
-/* --------- */
+/* Navbar */
 .sticky {
   background-color: #1b1a2ea9 !important;
   transition: all 0.3s ease-out 0s !important;
@@ -218,9 +217,7 @@ button:focus {
   width: 100%;
 }
 
-/* --------- */
-/* Home section */
-/* --------- */
+/* Home */
 .wave {
   animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
   animation-duration: 2.1s; /* Change to speed up or slow down */
@@ -411,9 +408,7 @@ button:focus {
   color: #700c86 !important;
 }
 
-/* --------- */
 /* Footer */
-/* --------- */
 .footer {
   background-color: rgb(10, 4, 22);
   bottom: 0 !important;
@@ -454,9 +449,7 @@ button:focus {
 .blockquote-footer {
   color: #a588c0 !important;
 }
-/* --------- */
 /* Projects */
-/* --------- */
 .project-section {
   position: relative !important;
   padding-top: 150px !important;
@@ -549,9 +542,7 @@ button:focus {
   font-weight: 500 !important;
   padding-top: 10px !important;
 }
-/* --------- */
 /* About */
-/* --------- */
 
 .about-section {
   position: relative !important;
@@ -609,9 +600,7 @@ button:focus {
     padding-top: 0 !important;
   }
 }
-/* --------- */
 /* Resume */
-/* --------- */
 
 .resume-section {
   position: relative !important;
@@ -753,7 +742,6 @@ button:focus {
   display: none !important;
 }
 
-/* Kontejner a středová linka zůstávají stejné */
 .timeline-header{
   padding-left: 25px;
 }
@@ -770,24 +758,25 @@ button:focus {
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 2px;
+  width: var(--timeline-line-width);
   background: #888;
   transform: translateX(-50%);
 }
 
-/* Základní styly položek */
 .timeline-item {
   position: relative;
-  margin-bottom: 170px;
+  margin-bottom: var(--timeline-spacing);
   min-height: 100px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .timeline-dot {
   position: absolute;
   top: 20px;
   left: 50%;
-  width: 16px;
-  height: 16px;
+  width: var(--timeline-dot-size);
+  height: var(--timeline-dot-size);
   background: #6f42c1;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -795,38 +784,41 @@ button:focus {
   transform: translateX(-50%);
 }
 
-/* Styl boxu s textem a data pro položky umístěné vlevo */
-/* Styl pro položky vlevo */
+.timeline-item.left {
+  justify-content: flex-start;
+}
+
 .timeline-item.left .timeline-box {
   position: absolute;
-  top: 0;
-  right: 53%;
+  right: var(--timeline-offset);
   padding: 20px;
   border-radius: 8px;
-  max-width: 300px;
+  width: var(--timeline-card-width);
+  max-width: var(--timeline-card-max-width-left);
   z-index: 1;
   background: linear-gradient(135deg, hsla(272, 85%, 74%, 0.15), hsla(272, 85%, 74%, 0.15));
   border-left: 6px solid hsla(272, 85%, 74%, 0.44);
   box-shadow: 0 2px 10px hsla(272, 85%, 74%, 0.25);
   color: #ddd;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  word-wrap: break-word;
 }
 .timeline-item.left .timeline-box:hover {
-  transform: scale(1.01) ;
-  overflow: hidden !important;
+  transform: scale(1.01);
 }
 
 .timeline-item.left .timeline-date {
   position: absolute;
   top: 10px;
-  left: 51%;
-  transform: translateX(10%);
+  left: var(--timeline-date-offset);
+  transform: translateX(10px);
   border: 1px solid #ddd;
   padding: 5px 10px;
   border-radius: 4px;
   font-weight: 500;
   white-space: nowrap;
   z-index: 3;
+  background: rgba(10, 4, 22, 0.9);
   transition: background 0.3s ease, color 0.3s ease;
 }
 .timeline-item.left .timeline-date:hover {
@@ -834,37 +826,41 @@ button:focus {
   color: #333;
 }
 
-/* Styl pro položky vpravo */
+.timeline-item.right {
+  justify-content: flex-end;
+}
+
 .timeline-item.right .timeline-box {
   position: absolute;
-  top: 0;
-  left: 53%;
+  left: var(--timeline-offset);
   background: linear-gradient(135deg, hsla(272, 85%, 74%, 0.35), hsla(272, 85%, 74%, 0.35));
   padding: 20px;
   border-radius: 8px;
-  max-width: 300px;
+  width: var(--timeline-card-width);
+  max-width: var(--timeline-card-max-width-right);
   z-index: 1;
   border-left: 6px solid hsla(272, 85%, 74%, 0.92);
   box-shadow: 0 2px 10px hsla(272, 85%, 74%, 0.55);
   color: #ddd;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  word-wrap: break-word;
 }
 .timeline-item.right .timeline-box:hover {
-  transform: scale(1.01) !important;
-  overflow: hidden !important;
+  transform: scale(1.01);
 }
 
 .timeline-item.right .timeline-date {
   position: absolute;
   top: 10px;
-  left: 49%;
-  transform: translateX(-110%);
+  right: var(--timeline-date-offset);
+  transform: translateX(-10px);
   border: 1px solid #ddd;
   padding: 5px 10px;
   border-radius: 4px;
   font-weight: 500;
   white-space: nowrap;
   z-index: 3;
+  background: rgba(10, 4, 22, 0.9);
   transition: background 0.3s ease, color 0.3s ease;
 }
 .timeline-item.right .timeline-date:hover {
@@ -873,7 +869,6 @@ button:focus {
 }
 
 
-/* Responsivita: pro obrazovky <= 768px – vše pod sebou */
 @media (max-width: 768px) {
   .timeline-header{
     padding-left: 0px;
@@ -922,7 +917,6 @@ button:focus {
 
 
 
-/* Celá stránka kontaktů */
 .contact-page {
   background-size: cover;
   background-position: center;
@@ -939,7 +933,6 @@ button:focus {
 
 
 
-/* Kontejner pro obsah kontaktní stránky */
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -948,7 +941,6 @@ button:focus {
   flex-wrap: wrap;
 }
 
-/* Fancy karta s glassmorphism efektem – stejná jako u ostatních sekcí */
 .fancy-card {
   border-radius: 12px;
   padding: 30px;
@@ -966,14 +958,12 @@ button:focus {
 
 
 
-/* Levý blok – kontaktní informace */
 .contact-info {
   flex: 0 0 40%;
   /* Zarovnáme ho nahoře */
   align-self: flex-start;
 }
 
-/* Nadpis v kontaktní kartě */
 .contact-title {
   color: var(--imp-text-color);
   font-weight: 600;
@@ -983,7 +973,6 @@ button:focus {
   font-size: 1.8rem;
 }
 
-/* Kontaktní text (telefon, e-mail) */
 .contact-info p {
   display: flex;
   align-items: center;
@@ -996,7 +985,6 @@ button:focus {
   color: var(--imp-text-color);
 }
 
-/* Sociální ikony */
 .social-icons {
   margin-top: 20px;
 }
@@ -1012,12 +1000,10 @@ button:focus {
   color: var(--imp-text-color);
 }
 
-/* Pravý blok – kontaktní formulář */
 .contact-form {
   flex: 0 0 55%;
 }
 
-/* Kontaktní formulář */
 .contact-form form {
   display: flex;
   flex-direction: column;
@@ -1055,7 +1041,6 @@ button:focus {
   resize: vertical;
 }
 
-/* Tlačítko pro odeslání formuláře */
 .send-btn {
   background: var(--imp-text-color);
   color: #fff;
@@ -1074,7 +1059,6 @@ button:focus {
   transform: translateY(-2px);
 }
 
-/* Responzivita: Na menších obrazovkách se obsah seřadí pod sebe */
 @media (max-width: 768px) {
   .contact-container {
     flex-direction: column;

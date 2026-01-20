@@ -15,12 +15,9 @@ import {
 } from "react-icons/fa";
 
 function ContactPage() {
-    // Lokální stav pro zobrazení hlášky
     const [feedbackMsg, setFeedbackMsg] = useState("");
-    // Stav pro reCAPTCHA (uloží token po ověření)
     const [captchaValue, setCaptchaValue] = useState(null);
 
-    // Funkce, která se spustí při změně reCAPTCHA (tj. ověření uživatele)
     const handleRecaptchaChange = (value) => {
         setCaptchaValue(value);
     };
@@ -28,7 +25,6 @@ function ContactPage() {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        // Zkontrolujeme, zda uživatel dokončil reCAPTCHA
         if (!captchaValue) {
             setFeedbackMsg("Prosím, dokončete reCAPTCHA.");
             return;
@@ -36,21 +32,18 @@ function ContactPage() {
 
         emailjs
             .sendForm(
-                "service_3azg8ex", // Tvůj Service ID
-                "template_nsk9ovf", // Tvůj Template ID
-                e.target, // Formulář
-                "4OrFtzvqEH0Hz5_8Q" // Tvůj Public (User) Key
+                "service_3azg8ex",
+                "template_nsk9ovf",
+                e.target,
+                "4OrFtzvqEH0Hz5_8Q"
             )
             .then(
                 (result) => {
-                    console.log("Email odeslán:", result.text);
                     setFeedbackMsg("Zpráva byla úspěšně odeslána!");
                     e.target.reset();
-                    // Reset reCAPTCHA po úspěšném odeslání (pokud je to potřeba)
                     setCaptchaValue(null);
                 },
                 (error) => {
-                    console.log("Chyba při odesílání:", error.text);
                     setFeedbackMsg("Došlo k chybě, zkuste to prosím znovu.");
                 }
             );
@@ -120,7 +113,6 @@ function ContactPage() {
                         <div className="contact-form fancy-card">
                             <h2 className="contact-title">Send a Message</h2>
 
-                            {/* Zde zobrazíme případnou hlášku (pokud není prázdná) */}
                             {feedbackMsg && (
                                 <div style={{ marginBottom: "15px" }}>
                                     <p
@@ -155,7 +147,6 @@ function ContactPage() {
                                     <Form.Label>Message</Form.Label>
                                     <Form.Control as="textarea" rows={5} placeholder="Your message" name="message" />
                                 </Form.Group>
-                                {/* Přidání reCAPTCHA */}
                                 <Form.Group className="form-group">
                                     <ReCAPTCHA
                                         sitekey="6LcCFPYqAAAAAHFrLAx0jFck7AizMjM65ird9D5r"
